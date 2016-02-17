@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">csc415-pharmacyapp-test</string>
+    <string name="medicine_list_fragment_label">Medications</string>
+    <string name="add_medicine_fragment_label">Add Medicine</string>
+    <string name="refills_fragment_label">Refills</string>
+    <string name="alerts_list_fragment_label">Alerts</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="add_medicine_name_text">Name:</string>
+    <string name="add_medicine_dose_text">Dose:</string>
+    <string name="add_medicine_times_text">Times:</string>
+    <string name="add_medicine_days_text">Days:</string>
+    <string name="add_medicine_time_button_text">+</string>
+    <string name="add_medicine_day_monday">Monday</string>
+    <string name="add_medicine_day_tuesday">Tuesday</string>
+    <string name="add_medicine_day_wednesday">Wednesday</string>
+    <string name="add_medicine_day_thursday">Thursday</string>
+    <string name="add_medicine_day_friday">Friday</string>
+    <string name="add_medicine_day_saturday">Saturday</string>
+    <string name="add_medicine_day_sunday">Sunday</string>
+    <string name="add_medicine_submit_button_text">Submit</string>
+    <string name="add_medicine_reset_button_text">Reset</string>
+
+    <string name="refills_title_text">Medication:</string>
+    <string name="refills_number_text">Refills Remaining:</string>
+</resources>

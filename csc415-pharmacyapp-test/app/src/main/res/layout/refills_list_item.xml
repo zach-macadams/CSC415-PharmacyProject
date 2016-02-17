@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_refills_medication_label"
+        android:text="@string/refills_title_text"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_refills_number_label"
+        android:text="@string/refills_number_text"
+        android:textSize="18sp"
+        android:layout_below="@+id/tv_refills_medication_label"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="@dimen/refills_horizontal_space"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_refills_medication"
+        android:layout_toEndOf="@+id/tv_refills_number_label"
+        android:layout_alignBaseline="@+id/tv_refills_medication_label"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_refills_number"
+        android:layout_below="@+id/tv_refills_medication"
+        android:layout_toEndOf="@+id/tv_refills_number_label"
+        android:layout_alignBaseline="@+id/tv_refills_number_label"
+        android:textSize="18sp"/>
+
+</RelativeLayout>
