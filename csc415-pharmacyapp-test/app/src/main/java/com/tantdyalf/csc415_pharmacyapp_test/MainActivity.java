@@ -30,6 +30,20 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Fragment fragment = null;
+        try
+        {
+            fragment = MedicineListFragment.class.newInstance();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.fragment_content_container, fragment).commit();
+        setTitle(R.string.medicine_list_fragment_label);
     }
 
     @Override
