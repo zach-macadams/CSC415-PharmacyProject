@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/fragment_view_medicine_detail">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_view_medicine_name_label"
+        android:text="@string/medicine_name_text"
+        android:textSize="25sp"
+        android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_view_medicine_prescribing_doctor_label"
+        android:text="@string/medicine_prescribing_doctor"
+        android:layout_below="@+id/tv_view_medicine_name_label"
+        android:textSize="25sp"
+        android:layout_marginTop="@dimen/new_medicine_content_vertical_space"
+        android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_view_medicine_dose_label"
+        android:text="@string/medicine_dose_text"
+        android:layout_below="@+id/tv_view_medicine_prescribing_doctor_label"
+        android:textSize="25sp"
+        android:layout_marginTop="@dimen/new_medicine_content_vertical_space"
+        android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_view_medicine_refills_label"
+        android:text="@string/medicine_refills_text"
+        android:textSize="25sp"
+        android:layout_below="@+id/tv_view_medicine_dose_label"
+        android:layout_marginTop="@dimen/new_medicine_content_vertical_space"
+        android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_view_medicine_weekdays_label"
+        android:text="@string/medicine_days_text"
+        android:layout_below="@+id/tv_view_medicine_refills_label"
+        android:textSize="25sp"
+        android:layout_marginTop="@dimen/new_medicine_content_vertical_space"
+        android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_view_medicine_method_label"
+        android:text="@string/medicine_method_text"
+        android:layout_below="@+id/tv_view_medicine_weekdays_label"
+        android:textSize="25sp"
+        android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space"
+        android:layout_marginTop="@dimen/new_medicine_content_vertical_space" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_view_medicine_name"
+        android:layout_toEndOf="@+id/tv_view_medicine_name_label"
+        android:layout_alignBaseline="@+id/tv_view_medicine_name_label"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_view_medicine_doctor"
+        android:layout_below="@+id/tv_view_medicine_name"
+        android:layout_toEndOf="@+id/tv_view_medicine_prescribing_doctor_label"
+        android:layout_alignBaseline="@+id/tv_view_medicine_prescribing_doctor_label"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_view_medicine_dose"
+        android:layout_below="@+id/tv_view_medicine_name"
+        android:layout_toEndOf="@+id/tv_view_medicine_dose_label"
+        android:layout_alignBaseline="@+id/tv_view_medicine_dose_label"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_view_medicine_refills"
+        android:layout_below="@+id/tv_view_medicine_dose"
+        android:layout_toEndOf="@+id/tv_view_medicine_refills_label"
+        android:layout_alignBaseline="@+id/tv_view_medicine_refills_label"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_view_medicine_weekdays"
+        android:layout_below="@+id/tv_view_medicine_refills_label"
+        android:layout_toEndOf="@+id/tv_view_medicine_weekdays_label"
+        android:layout_alignBaseline="@+id/tv_view_medicine_weekdays_label"
+        android:textSize="18sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tv_view_medicine_method"
+        android:layout_below="@+id/tv_view_medicine_weekdays"
+        android:layout_toEndOf="@+id/tv_view_medicine_method_label"
+        android:layout_alignBaseline="@+id/tv_view_medicine_method_label"
+        android:textSize="18sp" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_view_medicine_methods"
+        android:layout_below="@+id/tv_view_medicine_method_label"
+        android:layout_marginTop="@dimen/new_medicine_content_vertical_space">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_view_medicine_periodical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_view_medicine_start_time_label"
+                android:text="@string/medicine_start_time_text"
+                android:textSize="25sp"
+                android:layout_marginEnd="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_view_medicine_period_label"
+                android:text="@string/medicine_period_text"
+                android:textSize="25sp"
+                android:layout_below="@+id/tv_view_medicine_start_time_label"
+                android:layout_marginTop="@dimen/new_medicine_content_vertical_space"
+                android:layout_marginEnd="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_view_medicine_start_time"
+                android:layout_toEndOf="@+id/tv_view_medicine_start_time_label"
+                android:layout_alignBaseline="@+id/tv_view_medicine_start_time_label"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_view_medicine_period"
+                android:textSize="18sp"
+                android:layout_below="@+id/tv_view_medicine_start_time"
+                android:layout_toEndOf="@+id/tv_view_medicine_period_label"
+                android:layout_alignBaseline="@+id/tv_view_medicine_period_label"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/layout_view_medicine_scheduled">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_view_medicine_scheduled_times_label"
+                android:text="@string/medicine_scheduled_times_text"
+                android:textSize="25sp"
+                android:layout_marginEnd="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/tv_view_medicine_scheduled_times"
+                android:textSize="18sp"
+                android:layout_toEndOf="@+id/tv_view_medicine_scheduled_times_label"
+                android:layout_alignBaseline="@+id/tv_view_medicine_scheduled_times_label"/>
+        </RelativeLayout>
+    </FrameLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btn_view_edit_medicine"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true"
+        android:text="@string/medicine_edit_button_text"
+        android:textSize="20sp"
+        style="?android:buttonBarButtonStyle"/>
+
+</RelativeLayout>

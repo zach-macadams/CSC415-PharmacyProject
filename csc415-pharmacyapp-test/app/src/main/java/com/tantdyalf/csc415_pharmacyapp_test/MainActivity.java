@@ -12,13 +12,34 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import java.util.ArrayList;
+
+import io.realm.Realm;
+import io.realm.RealmConfiguration;
+import io.realm.RealmList;
+
+public class MainActivity extends AppCompatActivity implements
+        NavigationView.OnNavigationItemSelectedListener,
+        MedicineListFragment.OnMedicationSelectedListener {
+
+    private Realm medicationRealm;
+
+    public static final int SUNDAY = 0, MONDAY = 1, TUESDAY = 2, WEDNESDAY = 3, THURSDAY = 4,
+            FRIDAY = 5, SATURDAY = 6;
+
+    public static final int METHOD_SCHEDULED = 0, METHOD_PERIODICAL = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        /*RealmConfiguration configuration = new RealmConfiguration.Builder(this).build();
+        Realm.setDefaultConfiguration(configuration);*/
+
+        medicationRealm = Realm.getInstance(this);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -35,6 +56,7 @@ public class MainActivity extends AppCompatActivity
         try
         {
             fragment = MedicineListFragment.class.newInstance();
+
         }
         catch (Exception e)
         {
@@ -96,10 +118,6 @@ public class MainActivity extends AppCompatActivity
                 fragmentClass = RefillsFragment.class;
                 break;
 
-            case R.id.nav_add_medicine:
-                fragmentClass = AddMedicineFragment.class;
-                break;
-
             case R.id.nav_alert_list:
                 fragmentClass = AlertListFragment.class;
                 break;
@@ -120,10 +138,32 @@ public class MainActivity extends AppCompatActivity
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.fragment_content_container, fragment).commit();
-        setTitle(item.getTitle());
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onDestroy() {
+
+        super.onDestroy();
+        medicationRealm.close();
+    }
+
+    @Override
+    public void onMedicationSelected(String medicationName, String doctorName, int dose,
+                                     int refills, int method, ArrayList<Weekday> weekdays,
+                                     int period, String startTime, ArrayList<Time> scheduledTimes) {
+
+        ViewMedicineFragment fragment = ViewMedicineFragment.newInstance(medicationName, doctorName, dose,
+                refills, method, weekdays, period, startTime, scheduledTimes);
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragment_content_container, fragment)
+                .addToBackStack(null)
+                .commit();
     }
 }

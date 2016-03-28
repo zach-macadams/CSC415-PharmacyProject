@@ -1,5 +1,6 @@
 package com.tantdyalf.csc415_pharmacyapp_test;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -15,6 +16,11 @@ public class RefillsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         super.onCreateView(inflater, container, savedInstanceState);
-        return inflater.inflate(R.layout.fragment_refills, container, false);
+        View view = inflater.inflate(R.layout.fragment_refills, container, false);
+
+        Activity activity = getActivity();
+        activity.setTitle(R.string.refills_fragment_label);
+
+        return view;
     }
 }

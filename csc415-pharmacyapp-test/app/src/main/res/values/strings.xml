@@ -10,21 +10,42 @@
 
     <string name="action_settings">Settings</string>
 
-    <string name="add_medicine_name_text">Name:</string>
-    <string name="add_medicine_dose_text">Dose:</string>
-    <string name="add_medicine_times_text">Times:</string>
-    <string name="add_medicine_days_text">Days:</string>
-    <string name="add_medicine_time_button_text">+</string>
-    <string name="add_medicine_day_monday">Monday</string>
-    <string name="add_medicine_day_tuesday">Tuesday</string>
-    <string name="add_medicine_day_wednesday">Wednesday</string>
-    <string name="add_medicine_day_thursday">Thursday</string>
-    <string name="add_medicine_day_friday">Friday</string>
-    <string name="add_medicine_day_saturday">Saturday</string>
-    <string name="add_medicine_day_sunday">Sunday</string>
-    <string name="add_medicine_submit_button_text">Submit</string>
-    <string name="add_medicine_reset_button_text">Reset</string>
+    <string name="medicine_name_text">Name:</string>
+    <string name="medicine_prescribing_doctor">Doctor:</string>
+    <string name="medicine_dose_text">Dose:</string>
+    <string name="medicine_refills_text">Refills:</string>
+    <string name="medicine_method_text">Method:</string>
+    <string name="medicine_days_text">Days:</string>
+    <string name="medicine_start_time_text">Start Time:</string>
+    <string name="medicine_scheduled_times_text">Times:</string>
+
+    <string name="medicine_method_periodically_text">periodically</string>
+    <string name="medicine_method_scheduled_text">scheduled</string>
+    <string name="medicine_add_times_text">Add Time</string>
+    <string name="medicine_period_text">Period:</string>
+    <string name="medicine_period_start_time">Add Start Time</string>
+    <string name="medicine_period_lead_text">Every</string>
+    <string name="medicine_period_trail_text">hr/s</string>
+
+    <string name="medicine_day_monday">Monday</string>
+    <string name="medicine_day_tuesday">Tuesday</string>
+    <string name="medicine_day_wednesday">Wednesday</string>
+    <string name="medicine_day_thursday">Thursday</string>
+    <string name="medicine_day_friday">Friday</string>
+    <string name="medicine_day_saturday">Saturday</string>
+    <string name="medicine_day_sunday">Sunday</string>
+
+    <string name="medicine_submit_button_text">Submit</string>
+    <string name="medicine_reset_button_text">Reset</string>
+    <string name="medicine_edit_button_text">Edit</string>
 
     <string name="refills_title_text">Medication:</string>
     <string name="refills_number_text">Refills Remaining:</string>
+
+    <string name="add_time_dialog_title">Add Time</string>
+    <string name="add_time_dialog_hour_hint">Hour</string>
+    <string name="add_time_dialog_minute_hint">Minute</string>
+    <string name="add_time_dialog_am">AM</string>
+    <string name="add_time_dialog_pm">PM</string>
+    <string name="add_medicine_error">Some required fields missing.</string>
 </resources>
