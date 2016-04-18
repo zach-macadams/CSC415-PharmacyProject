@@ -2,13 +2,11 @@ package com.tantdyalf.csc415_pharmacyapp_test;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -96,7 +94,7 @@ public class MedicineListFragment extends Fragment {
                     e.printStackTrace();
                 }
                 FragmentManager fragmentManager = getFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.fragment_content_container, fragment).commit();
+                fragmentManager.beginTransaction().replace(R.id.fragment_content_container, fragment).addToBackStack(null).commit();
             }
         });
 
@@ -108,7 +106,7 @@ public class MedicineListFragment extends Fragment {
     }
 
 
-    class MedicineListAdapter extends RecyclerView.Adapter<ViewHolder> {
+    class MedicineListAdapter extends RecyclerView.Adapter<MedicineListViewHolder> {
 
         private LayoutInflater mLayoutInflater;
 
@@ -118,13 +116,13 @@ public class MedicineListFragment extends Fragment {
         }
 
         @Override
-        public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public MedicineListViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-            return new ViewHolder(mLayoutInflater.inflate(R.layout.medicine_list_item, parent, false));
+            return new MedicineListViewHolder(mLayoutInflater.inflate(R.layout.medicine_list_item, parent, false));
         }
 
         @Override
-        public void onBindViewHolder(ViewHolder holder, final int position) {
+        public void onBindViewHolder(MedicineListViewHolder holder, final int position) {
 
             final String medicationName = medicationResults.get(position).getName();
             final String medicationDoctor = medicationResults.get(position).getDoctorName();
@@ -182,12 +180,12 @@ public class MedicineListFragment extends Fragment {
         }
     }
 
-    class ViewHolder extends RecyclerView.ViewHolder {
+    class MedicineListViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txtMedicineName;
         private TextView txtDoctorName;
 
-        public ViewHolder(View itemView) {
+        public MedicineListViewHolder(View itemView) {
             super(itemView);
 
             txtMedicineName = (TextView) itemView.findViewById(R.id.tv_medicine_name);

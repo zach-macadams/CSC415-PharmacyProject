@@ -28,7 +28,6 @@ import java.util.Calendar;
 
 import io.realm.Realm;
 import io.realm.RealmList;
-import io.realm.RealmObject;
 
 /**
  * Created by macadamsz1 on 2/13/16.
@@ -60,8 +59,6 @@ public class AddMedicineFragment extends Fragment implements
     private Realm medicationRealm;
 
     private ArrayList<Weekday> weekDays = new ArrayList<>();
-
-
 
 
 
@@ -252,6 +249,7 @@ public class AddMedicineFragment extends Fragment implements
         medication.setDoctorName(eTxtAddMedicineDoctor.getText().toString());
         medication.setDose(Integer.parseInt(eTxtAddMedicineDose.getText().toString()));
         medication.setNumRefills(Integer.parseInt(eTxtAddMedicineRefills.getText().toString()));
+        medication.setAlertsActive(true);
 
         RealmList<Weekday> weekDaysRealmList = new RealmList<Weekday>();
         for(int i = 0; i < weekDays.size(); i++)
@@ -354,7 +352,17 @@ public class AddMedicineFragment extends Fragment implements
                     displayHour = hourOfDay;
                     endTimeTxt = "AM";
                 }
-                String timeString = displayHour + ":" + minute + " " + endTimeTxt;
+                String minuteStr = String.valueOf(minute);
+                String displayMinute = "";
+                if(minute < 10)
+                {
+                    displayMinute = displayMinute + "0" + minuteStr;
+                }
+                else
+                {
+                    displayMinute = minuteStr;
+                }
+                String timeString = displayHour + ":" + displayMinute + " " + endTimeTxt;
                 timeView.setText(timeString);
             }
         }, hour, minute, false);

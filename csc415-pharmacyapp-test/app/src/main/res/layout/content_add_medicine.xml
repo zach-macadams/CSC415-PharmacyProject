@@ -17,97 +17,56 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
+
+        <EditText
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_add_medicine_name_label"
-            android:text="@string/medicine_name_text"
-            android:textSize="25sp"
-            android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space"
+            android:id="@+id/et_add_medicine_name"
+            android:inputType="text"
+            android:layout_alignParentEnd="true"
+            android:hint="@string/medicine_name_text"
             android:layout_marginTop="10dp"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_add_medicine_prescribing_doctor_label"
-            android:text="@string/medicine_prescribing_doctor"
-            android:layout_below="@+id/tv_add_medicine_name_label"
-            android:textSize="25sp"
-            android:layout_marginTop="@dimen/new_medicine_content_vertical_space"
-            android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space"/>
+            android:id="@+id/et_add_medicine_doctor"
+            android:inputType="text"
+            android:layout_below="@+id/et_add_medicine_name"
+            android:layout_alignParentEnd="true"
+            android:hint="@string/medicine_prescribing_doctor"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_add_medicine_dose_label"
-            android:text="@string/medicine_dose_text"
-            android:layout_below="@+id/tv_add_medicine_prescribing_doctor_label"
-            android:textSize="25sp"
-            android:layout_marginTop="@dimen/new_medicine_content_vertical_space"
-            android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space"/>
+            android:id="@+id/et_add_medicine_dose"
+            android:inputType="numberDecimal"
+            android:layout_below="@+id/et_add_medicine_doctor"
+            android:hint="@string/medicine_dose_text"/>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <EditText
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/tv_add_medicine_refills_label"
-            android:text="@string/medicine_refills_text"
-            android:layout_below="@+id/tv_add_medicine_dose_label"
-            android:textSize="25sp"
-            android:layout_marginTop="@dimen/new_medicine_content_vertical_space"
-            android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space"/>
+            android:id="@+id/et_add_medicine_refills"
+            android:inputType="number"
+            android:layout_below="@+id/et_add_medicine_dose"
+            android:hint="@string/medicine_refills_text"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/tv_add_medicine_days_label"
             android:text="@string/medicine_days_text"
-            android:layout_below="@+id/tv_add_medicine_refills_label"
+            android:layout_below="@+id/et_add_medicine_refills"
             android:textSize="25sp"
             android:layout_marginTop="@dimen/new_medicine_content_vertical_space"
             android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space"/>
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/et_add_medicine_name"
-            android:inputType="text"
-            android:layout_toEndOf="@+id/tv_add_medicine_name_label"
-            android:layout_alignBaseline="@+id/tv_add_medicine_name_label"
-            android:layout_alignParentEnd="true"/>
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/et_add_medicine_doctor"
-            android:inputType="text"
-            android:layout_below="@+id/et_add_medicine_name"
-            android:layout_toEndOf="@+id/tv_add_medicine_name_label"
-            android:layout_alignBaseline="@+id/tv_add_medicine_prescribing_doctor_label"
-            android:layout_alignParentEnd="true"/>
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/et_add_medicine_dose"
-            android:inputType="numberDecimal"
-            android:layout_below="@+id/et_add_medicine_name"
-            android:layout_toEndOf="@+id/tv_add_medicine_name_label"
-            android:layout_alignBaseline="@+id/tv_add_medicine_dose_label"/>
-
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/et_add_medicine_refills"
-            android:inputType="number"
-            android:layout_below="@+id/et_add_medicine_dose"
-            android:layout_toEndOf="@+id/tv_add_medicine_name_label"
-            android:layout_alignBaseline="@+id/tv_add_medicine_refills_label"/>
 
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/layout_add_medicine_weekdays"
-            android:layout_below="@+id/tv_add_medicine_refills_label"
+            android:layout_below="@+id/et_add_medicine_refills"
             android:layout_toEndOf="@+id/tv_add_medicine_days_label"
             android:layout_alignTop="@+id/tv_add_medicine_days_label">
 
@@ -297,8 +256,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/add_medicine_method_layout_container"
-            android:layout_marginTop="40dp">
+            android:layout_below="@+id/add_medicine_method_layout_container">
 
             <Button
                 android:layout_width="wrap_content"

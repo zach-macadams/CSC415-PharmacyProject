@@ -15,8 +15,6 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 
 import io.realm.Realm;
-import io.realm.RealmConfiguration;
-import io.realm.RealmList;
 
 public class MainActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener,
@@ -34,9 +32,6 @@ public class MainActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        /*RealmConfiguration configuration = new RealmConfiguration.Builder(this).build();
-        Realm.setDefaultConfiguration(configuration);*/
 
         medicationRealm = Realm.getInstance(this);
 
@@ -66,6 +61,9 @@ public class MainActivity extends AppCompatActivity implements
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.fragment_content_container, fragment).commit();
         setTitle(R.string.medicine_list_fragment_label);
+
+
+
     }
 
     @Override

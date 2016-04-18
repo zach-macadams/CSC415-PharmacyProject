@@ -10,10 +10,10 @@
 
     <string name="action_settings">Settings</string>
 
-    <string name="medicine_name_text">Name:</string>
-    <string name="medicine_prescribing_doctor">Doctor:</string>
-    <string name="medicine_dose_text">Dose:</string>
-    <string name="medicine_refills_text">Refills:</string>
+    <string name="medicine_name_text">Medicine Name</string>
+    <string name="medicine_prescribing_doctor">Doctor\'s Name</string>
+    <string name="medicine_dose_text">Dose</string>
+    <string name="medicine_refills_text">Refills</string>
     <string name="medicine_method_text">Method:</string>
     <string name="medicine_days_text">Days:</string>
     <string name="medicine_start_time_text">Start Time:</string>

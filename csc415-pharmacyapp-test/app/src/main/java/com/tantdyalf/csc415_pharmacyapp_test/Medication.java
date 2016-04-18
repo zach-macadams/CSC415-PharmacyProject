@@ -1,7 +1,5 @@
 package com.tantdyalf.csc415_pharmacyapp_test;
 
-import java.util.ArrayList;
-
 import io.realm.RealmList;
 import io.realm.RealmObject;
 
@@ -16,6 +14,7 @@ public class Medication extends RealmObject{
     private int numRefills;
     private int method;
     private int period;
+    private boolean alertsActive;
     private String startTime;
     private RealmList<Time> timesToBeTaken;
     private RealmList<Weekday> daysToBeTaken;
@@ -130,5 +129,14 @@ public class Medication extends RealmObject{
     public void setStartTime(String startTime) {
 
         this.startTime = startTime;
+    }
+
+
+    public boolean getAlertsActive() {
+        return alertsActive;
+    }
+
+    public void setAlertsActive(boolean alertsActive) {
+        this.alertsActive = alertsActive;
     }
 }
