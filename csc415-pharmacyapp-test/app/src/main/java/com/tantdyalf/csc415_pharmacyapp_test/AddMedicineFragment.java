@@ -446,12 +446,17 @@ public class AddMedicineFragment extends Fragment implements
                 }
                 else
                 {
-                    for(Weekday weekday : weekDays)
+                    int removePos = -1;
+                    for(int i = 0; i < weekDays.size(); i++)
                     {
-                        if(weekday.getDay() == MainActivity.SUNDAY)
+                        if(weekDays.get(i).getDay() == MainActivity.SUNDAY)
                         {
-                            weekDays.remove(weekday);
+                            removePos = i;
                         }
+                    }
+                    if(removePos != -1)
+                    {
+                        weekDays.remove(removePos);
                     }
                 }
                 break;
@@ -465,12 +470,17 @@ public class AddMedicineFragment extends Fragment implements
                 }
                 else
                 {
-                    for(Weekday weekday : weekDays)
+                    int removePos = -1;
+                    for(int i = 0; i < weekDays.size(); i++)
                     {
-                        if(weekday.getDay() == MainActivity.MONDAY)
+                        if(weekDays.get(i).getDay() == MainActivity.MONDAY)
                         {
-                            weekDays.remove(weekday);
+                            removePos = i;
                         }
+                    }
+                    if(removePos != -1)
+                    {
+                        weekDays.remove(removePos);
                     }
                 }
                 break;
@@ -484,12 +494,17 @@ public class AddMedicineFragment extends Fragment implements
                 }
                 else
                 {
-                    for(Weekday weekday : weekDays)
+                    int removePos = -1;
+                    for(int i = 0; i < weekDays.size(); i++)
                     {
-                        if(weekday.getDay() == MainActivity.TUESDAY)
+                        if(weekDays.get(i).getDay() == MainActivity.TUESDAY)
                         {
-                            weekDays.remove(weekday);
+                            removePos = i;
                         }
+                    }
+                    if(removePos != -1)
+                    {
+                        weekDays.remove(removePos);
                     }
                 }
                 break;
@@ -503,12 +518,17 @@ public class AddMedicineFragment extends Fragment implements
                 }
                 else
                 {
-                    for(Weekday weekday : weekDays)
+                    int removePos = -1;
+                    for(int i = 0; i < weekDays.size(); i++)
                     {
-                        if(weekday.getDay() == MainActivity.WEDNESDAY)
+                        if(weekDays.get(i).getDay() == MainActivity.WEDNESDAY)
                         {
-                            weekDays.remove(weekday);
+                            removePos = i;
                         }
+                    }
+                    if(removePos != -1)
+                    {
+                        weekDays.remove(removePos);
                     }
                 }
                 break;
@@ -522,12 +542,17 @@ public class AddMedicineFragment extends Fragment implements
                 }
                 else
                 {
-                    for(Weekday weekday : weekDays)
+                    int removePos = -1;
+                    for(int i = 0; i < weekDays.size(); i++)
                     {
-                        if(weekday.getDay() == MainActivity.THURSDAY)
+                        if(weekDays.get(i).getDay() == MainActivity.THURSDAY)
                         {
-                            weekDays.remove(weekday);
+                            removePos = i;
                         }
+                    }
+                    if(removePos != -1)
+                    {
+                        weekDays.remove(removePos);
                     }
                 }
                 break;
@@ -541,12 +566,17 @@ public class AddMedicineFragment extends Fragment implements
                 }
                 else
                 {
-                    for(Weekday weekday : weekDays)
+                    int removePos = -1;
+                    for(int i = 0; i < weekDays.size(); i++)
                     {
-                        if(weekday.getDay() == MainActivity.FRIDAY)
+                        if(weekDays.get(i).getDay() == MainActivity.FRIDAY)
                         {
-                            weekDays.remove(weekday);
+                            removePos = i;
                         }
+                    }
+                    if(removePos != -1)
+                    {
+                        weekDays.remove(removePos);
                     }
                 }
                 break;
@@ -560,12 +590,17 @@ public class AddMedicineFragment extends Fragment implements
                 }
                 else
                 {
-                    for(Weekday weekday : weekDays)
+                    int removePos = -1;
+                    for(int i = 0; i < weekDays.size(); i++)
                     {
-                        if(weekday.getDay() == MainActivity.SATURDAY)
+                        if(weekDays.get(i).getDay() == MainActivity.SATURDAY)
                         {
-                            weekDays.remove(weekday);
+                            removePos = i;
                         }
+                    }
+                    if(removePos != -1)
+                    {
+                        weekDays.remove(removePos);
                     }
                 }
                 break;

@@ -2,16 +2,21 @@ package com.tantdyalf.csc415_pharmacyapp_test;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -81,7 +86,74 @@ public class RefillsFragment extends Fragment {
         public void onBindViewHolder(RefillsListViewHolder holder, int position) {
 
             final String medicationName = medicationResults.get(position).getName();
-            holder.setData(medicationName);
+            final int numRefills = medicationResults.get(position).getNumRefills();
+
+            holder.setData(medicationName, numRefills);
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setView(getView(R.layout.refills_dialog_layout, medicationName, numRefills))
+                           .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                               @Override
+                               public void onClick(DialogInterface dialog, int which) {
+
+                                   refillsListRecyclerView.getAdapter().notifyDataSetChanged();
+                               }
+                           })
+                           .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                               @Override
+                               public void onClick(DialogInterface dialog, int which) {
+
+                               }
+                           }).show();
+                }
+            });
+        }
+
+        public View getView(int layoutId, final String medicineName, final int numRefills) {
+
+            View view = getActivity().getLayoutInflater().inflate(layoutId, null);
+
+            TextView txtMedicineName = (TextView) view.findViewById(R.id.txt_medicine_name);
+            Button btnDecreaseRefills = (Button) view.findViewById(R.id.btn_decrease_refills);
+            Button btnIncreaseRefills = (Button) view.findViewById(R.id.btn_increase_refills);
+            final TextView txtNumRefills = (TextView) view.findViewById(R.id.txt_refills);
+
+            txtMedicineName.setText(medicineName);
+            txtNumRefills.setText(String.valueOf(numRefills));
+
+            btnDecreaseRefills.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Medication toUpdate = medicationRealm.where(Medication.class)
+                            .equalTo("name", medicineName)
+                            .findFirst();
+
+                    medicationRealm.beginTransaction();
+                    toUpdate.setNumRefills(toUpdate.getNumRefills() - 1);
+                    medicationRealm.commitTransaction();
+
+                    txtNumRefills.setText(String.valueOf(toUpdate.getNumRefills()));
+                }
+            });
+
+            btnIncreaseRefills.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Medication toUpdate = medicationRealm.where(Medication.class)
+                            .equalTo("name", medicineName)
+                            .findFirst();
+
+                    medicationRealm.beginTransaction();
+                    toUpdate.setNumRefills(toUpdate.getNumRefills() + 1);
+                    medicationRealm.commitTransaction();
+
+                    txtNumRefills.setText(String.valueOf(toUpdate.getNumRefills()));
+                }
+            });
+
+            return view;
         }
 
 
@@ -95,17 +167,19 @@ public class RefillsFragment extends Fragment {
     class RefillsListViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txtMedicineName;
+        private TextView txtRefills;
 
         public RefillsListViewHolder(View itemView) {
             super(itemView);
 
-            txtMedicineName = (TextView) itemView.findViewById(R.id.tv_alert_medicine_name);
+            txtMedicineName = (TextView) itemView.findViewById(R.id.tv_refills_medicine_name);
+            txtRefills = (TextView) itemView.findViewById(R.id.tv_refills_number);
         }
 
-        private void setData(final String medicineName) {
+        private void setData(String medicineName, int numRefills) {
 
             txtMedicineName.setText(medicineName);
-
+            txtRefills.setText(String.valueOf(numRefills));
         }
     }
 }

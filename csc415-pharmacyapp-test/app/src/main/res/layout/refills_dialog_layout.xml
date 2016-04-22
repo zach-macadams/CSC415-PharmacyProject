@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="20dp"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    android:layout_marginBottom="10dp">
+
+    <TextView
+        android:id="@+id/txt_medicine_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="center_horizontal"
+        android:textSize="20sp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <Button
+            android:id="@+id/btn_decrease_refills"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?attr/buttonStyleSmall"
+            android:text="@string/decrease_refills"
+            android:textSize="20sp"
+            />
+
+        <TextView
+            android:id="@+id/txt_refills"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            />
+
+        <Button
+            android:id="@+id/btn_increase_refills"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?attr/buttonStyleSmall"
+            android:text="@string/increase_refills"
+            android:textSize="20sp"
+            />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/refills_text"
+        android:textSize="20sp"
+        android:gravity="center_horizontal"
+        />
+
+</LinearLayout>

@@ -1,9 +1,14 @@
 <resources>
-    <string name="app_name">csc415-pharmacyapp-test</string>
+    <string name="app_name">Pill Master</string>
     <string name="medicine_list_fragment_label">Medications</string>
     <string name="add_medicine_fragment_label">Add Medicine</string>
     <string name="refills_fragment_label">Refills</string>
     <string name="alerts_list_fragment_label">Alerts</string>
+
+    <string name="decrease_refills">-</string>
+    <string name="increase_refills">+</string>
+    <string name="refills_text">Number of Refills</string>
+
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
