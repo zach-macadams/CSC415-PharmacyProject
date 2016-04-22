@@ -6,7 +6,7 @@ import io.realm.RealmObject;
 /**
  * Created by macadamsz1 on 2/16/16.
  */
-public class Medication extends RealmObject{
+public class Medication extends RealmObject {
 
     private String name;
     private String doctorName;
@@ -15,9 +15,10 @@ public class Medication extends RealmObject{
     private int method;
     private int period;
     private boolean alertsActive;
-    private String startTime;
+    private Time startTime;
     private RealmList<Time> timesToBeTaken;
     private RealmList<Weekday> daysToBeTaken;
+    private RealmList<PendingIntentRequestCode> resultCodes;
 
 
     public Medication() {
@@ -121,12 +122,12 @@ public class Medication extends RealmObject{
 
 
 
-    public String getStartTime() {
+    public Time getStartTime() {
 
         return this.startTime;
     }
 
-    public void setStartTime(String startTime) {
+    public void setStartTime(Time startTime) {
 
         this.startTime = startTime;
     }
@@ -138,5 +139,13 @@ public class Medication extends RealmObject{
 
     public void setAlertsActive(boolean alertsActive) {
         this.alertsActive = alertsActive;
+    }
+
+    public RealmList<PendingIntentRequestCode> getResultCodes() {
+        return resultCodes;
+    }
+
+    public void setResultCodes(RealmList<PendingIntentRequestCode> resultCodes) {
+        this.resultCodes = resultCodes;
     }
 }

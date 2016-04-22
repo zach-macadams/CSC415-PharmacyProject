@@ -13,6 +13,9 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+
 import io.realm.Realm;
 import io.realm.RealmResults;
 
@@ -128,17 +131,30 @@ public class AlertListFragment extends Fragment {
                     if(buttonView.getId() == R.id.switch_alerts_active)
                     {
                         Medication toEdit = medicationRealm.where(Medication.class).equalTo("name", medicineName).findFirst();
-                        medicationRealm.beginTransaction();
 
                         if(alertsSwitch.isChecked())
                         {
+                            if(toEdit.getMethod() == MainActivity.METHOD_PERIODICAL)
+                            {
+                                ArrayList<Calendar> alertTimes = TimeManager.getPeriodicalTimes(toEdit);
+                                TimeManager.setUpAlerts(getContext(), medicationRealm, toEdit, alertTimes);
+                            }
+                            else
+                            {
+                                ArrayList<Calendar> alertTimes = TimeManager.getScheduledTimes(toEdit);
+                                TimeManager.setUpAlerts(getContext(), medicationRealm, toEdit, alertTimes);
+                            }
+                            medicationRealm.beginTransaction();
                             toEdit.setAlertsActive(true);
+                            medicationRealm.commitTransaction();
                         }
                         else
                         {
+                            TimeManager.removeAlerts(getContext(), medicationRealm, toEdit);
+                            medicationRealm.beginTransaction();
                             toEdit.setAlertsActive(false);
+                            medicationRealm.commitTransaction();
                         }
-                        medicationRealm.commitTransaction();
                     }
                 }
             });

@@ -1,16 +1,17 @@
 package com.tantdyalf.csc415_pharmacyapp_test;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import java.io.Serializable;
 
 import io.realm.RealmObject;
+import io.realm.WeekdayRealmProxy;
 
 /**
  * Created by Zach_macadams on 3/21/16.
  */
-public class Weekday extends RealmObject implements Serializable {
+
+@org.parceler.Parcel(implementations = {WeekdayRealmProxy.class},
+        value = org.parceler.Parcel.Serialization.BEAN,
+        analyze = {Weekday.class})
+public class Weekday extends RealmObject {
 
     private String dayName;
     private int day;

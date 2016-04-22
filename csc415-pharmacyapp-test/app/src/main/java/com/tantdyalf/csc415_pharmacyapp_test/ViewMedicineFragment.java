@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.parceler.Parcel;
+import org.parceler.Parcels;
 import org.w3c.dom.Text;
 
 import java.util.ArrayList;
@@ -57,10 +59,10 @@ public class ViewMedicineFragment  extends Fragment {
         args.putInt(ARGUMENT_MEDICATION_DOSE, dose);
         args.putInt(ARGUMENT_MEDICATION_REFILLS, refills);
         args.putInt(ARGUMENT_MEDICATION_METHOD, method);
-        args.putSerializable(ARGUMENT_MEDICATION_WEEKDAYS, weekdays);
+        args.putParcelable(ARGUMENT_MEDICATION_WEEKDAYS, Parcels.wrap(weekdays));
         args.putInt(ARGUMENT_MEDICATION_PERIOD, period);
         args.putString(ARGUMENT_MEDICATION_START_TIME, startTime);
-        args.putSerializable(ARGUMENT_MEDICATION_SCHEDULED_TIMES, scheduledTimes);
+        args.putParcelable(ARGUMENT_MEDICATION_SCHEDULED_TIMES, Parcels.wrap(scheduledTimes));
 
         ViewMedicineFragment fragment = new ViewMedicineFragment();
         fragment.setArguments(args);
@@ -99,7 +101,7 @@ public class ViewMedicineFragment  extends Fragment {
         txtViewMedicineDose.setText(String.valueOf(args.getInt(ARGUMENT_MEDICATION_DOSE)));
         txtViewMedicineRefills.setText(String.valueOf(args.getInt(ARGUMENT_MEDICATION_REFILLS)));
 
-        ArrayList<Weekday> weekdays = (ArrayList<Weekday>) args.getSerializable(ARGUMENT_MEDICATION_WEEKDAYS);
+        ArrayList<Weekday> weekdays = Parcels.unwrap(args.getParcelable(ARGUMENT_MEDICATION_WEEKDAYS));
         String weekdayString = "";
         if(weekdays != null)
         {
@@ -122,7 +124,7 @@ public class ViewMedicineFragment  extends Fragment {
         {
             txtViewMedicineMethod.setText("Scheduled");
             layoutPeriodicalLayout.setVisibility(View.INVISIBLE);
-            ArrayList<Time> scheduledTimes = (ArrayList<Time>) args.getSerializable(ARGUMENT_MEDICATION_SCHEDULED_TIMES);
+            ArrayList<Time> scheduledTimes = Parcels.unwrap(args.getParcelable(ARGUMENT_MEDICATION_SCHEDULED_TIMES));
             String scheduledTimesString = "";
             if(scheduledTimes != null)
             {

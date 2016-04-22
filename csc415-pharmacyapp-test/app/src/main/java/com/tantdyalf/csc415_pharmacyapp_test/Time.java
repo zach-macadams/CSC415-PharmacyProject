@@ -1,16 +1,17 @@
 package com.tantdyalf.csc415_pharmacyapp_test;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import java.io.Serializable;
+import org.parceler.Parcel;
 
 import io.realm.RealmObject;
+import io.realm.TimeRealmProxy;
 
 /**
  * Created by Zach_macadams on 3/21/16.
  */
-public class Time extends RealmObject implements Serializable{
+@org.parceler.Parcel(implementations = {TimeRealmProxy.class},
+                        value = Parcel.Serialization.BEAN,
+                        analyze = {Time.class})
+public class Time extends RealmObject {
 
     private String time;
 
@@ -28,32 +29,4 @@ public class Time extends RealmObject implements Serializable{
 
         this.time = time;
     }
-
-    /*@Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-
-        dest.writeString(time);
-    }
-
-    public static final Creator CREATOR = new Creator() {
-        @Override
-        public Object createFromParcel(Parcel source) {
-            return new Time(source);
-        }
-
-        @Override
-        public Object[] newArray(int size) {
-            return new Object[0];
-        }
-    };
-
-    public Time(Parcel source) {
-
-        this.time = source.readString();
-    }*/
 }

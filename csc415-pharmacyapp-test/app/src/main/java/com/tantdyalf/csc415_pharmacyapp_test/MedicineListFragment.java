@@ -1,6 +1,7 @@
 package com.tantdyalf.csc415_pharmacyapp_test;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -74,7 +75,6 @@ public class MedicineListFragment extends Fragment {
         super.onCreateView(inflater, container, savedInstanceState);
 
         View view = inflater.inflate(R.layout.fragment_medications, container, false);
-
         Activity activity = getActivity();
         activity.setTitle(R.string.medicine_list_fragment_label);
 
@@ -138,7 +138,7 @@ public class MedicineListFragment extends Fragment {
             final int medicationMethod = medicationResults.get(position).getMethod();
 
             final int medicationPeriod = medicationResults.get(position).getPeriod();
-            final String medicationStartTime = medicationResults.get(position).getStartTime();
+            final String medicationStartTime = medicationResults.get(position).getStartTime().getTime();
 
             RealmList<Time> medicationRealmScheduledTimes = medicationResults.get(position).getTimesToBeTaken();
             final ArrayList<Time> medicationScheduledTimes = new ArrayList<>();

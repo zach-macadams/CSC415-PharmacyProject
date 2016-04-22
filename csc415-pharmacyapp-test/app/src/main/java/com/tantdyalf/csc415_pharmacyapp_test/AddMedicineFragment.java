@@ -1,8 +1,11 @@
 package com.tantdyalf.csc415_pharmacyapp_test;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -23,8 +26,11 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Random;
+import java.util.TimeZone;
 
 import io.realm.Realm;
 import io.realm.RealmList;
@@ -191,8 +197,15 @@ public class AddMedicineFragment extends Fragment implements
                     {
                         newMedicine.setMethod(MainActivity.METHOD_PERIODICAL);
                         newMedicine.setPeriod(Integer.parseInt(eTxtPeriod.getText().toString()));
-                        newMedicine.setStartTime(txtStartTime.getText().toString());
+                        Time startTime = medicationRealm.createObject(Time.class);
+                        startTime.setTime(txtStartTime.getText().toString());
+                        newMedicine.setStartTime(startTime);
                         newMedicine.setTimesToBeTaken(new RealmList<Time>());
+
+                        medicationRealm.commitTransaction();
+
+                        ArrayList<Calendar> alertTimes = TimeManager.getPeriodicalTimes(newMedicine);
+                        TimeManager.setUpAlerts(getContext(), medicationRealm, newMedicine, alertTimes);
                     }
                     else
                     {
@@ -205,10 +218,16 @@ public class AddMedicineFragment extends Fragment implements
                         }
                         newMedicine.setTimesToBeTaken(timesRealmList);
                         newMedicine.setMethod(MainActivity.METHOD_SCHEDULED);
-                        newMedicine.setStartTime("");
+                        Time startTime = medicationRealm.createObject(Time.class);
+                        startTime.setTime("");
+                        newMedicine.setStartTime(startTime);
+
+                        medicationRealm.commitTransaction();
+
+                        ArrayList<Calendar> alertTimes = TimeManager.getScheduledTimes(newMedicine);
+                        TimeManager.setUpAlerts(getContext(), medicationRealm, newMedicine, alertTimes);
                     }
 
-                    medicationRealm.commitTransaction();
                     Log.d("Realm", "committed new medicine");
                     Fragment fragment = null;
                     try
@@ -237,6 +256,8 @@ public class AddMedicineFragment extends Fragment implements
         });
         return view;
     }
+
+
 
     private void removeAddedTime(TextView view) {
 
