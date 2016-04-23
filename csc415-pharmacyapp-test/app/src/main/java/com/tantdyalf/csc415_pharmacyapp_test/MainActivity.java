@@ -27,6 +27,16 @@ public class MainActivity extends AppCompatActivity implements
 
     public static final int METHOD_SCHEDULED = 0, METHOD_PERIODICAL = 1;
 
+    public static final String ARGUMENT_MEDICATION_NAME = "medicationName";
+    public static final String ARGUMENT_MEDICATION_DOCTOR = "medicationDoctor";
+    public static final String ARGUMENT_MEDICATION_DOSE = "medicationDose";
+    public static final String ARGUMENT_MEDICATION_REFILLS = "medicationRefills";
+    public static final String ARGUMENT_MEDICATION_WEEKDAYS = "medicationWeekdays";
+    public static final String ARGUMENT_MEDICATION_METHOD = "medicationMethod";
+    public static final String ARGUMENT_MEDICATION_PERIOD = "medicationPeriod";
+    public static final String ARGUMENT_MEDICATION_START_TIME = "medicationStartTime";
+    public static final String ARGUMENT_MEDICATION_SCHEDULED_TIMES = "medicationScheduledTimes";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

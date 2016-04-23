@@ -1,221 +1,306 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/scroll_edit_medicine"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/fragment_edit_medicine">
+    tools:showIn="@layout/fragment_edit_medicine"
+    android:fillViewport="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_edit_medicine_name_label"
-        android:text="@string/medicine_name_text"
-        android:textSize="25sp"
-        android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space"
-        android:layout_marginTop="10dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_edit_medicine_prescribing_doctor_label"
-        android:text="@string/medicine_prescribing_doctor"
-        android:layout_below="@+id/tv_edit_medicine_name_label"
-        android:textSize="25sp"
-        android:layout_marginTop="@dimen/new_medicine_content_vertical_space"
-        android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_edit_medicine_dose_label"
-        android:text="@string/medicine_dose_text"
-        android:layout_below="@+id/tv_edit_medicine_prescribing_doctor_label"
-        android:textSize="25sp"
-        android:layout_marginTop="@dimen/new_medicine_content_vertical_space"
-        android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_edit_medicine_refills_label"
-        android:text="@string/medicine_refills_text"
-        android:layout_below="@+id/tv_edit_medicine_dose_label"
-        android:textSize="25sp"
-        android:layout_marginTop="@dimen/new_medicine_content_vertical_space"
-        android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_edit_medicine_days_label"
-        android:text="@string/medicine_days_text"
-        android:layout_below="@+id/tv_edit_medicine_refills_label"
-        android:textSize="25sp"
-        android:layout_marginTop="@dimen/new_medicine_content_vertical_space"
-        android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/et_edit_medicine_name"
-        android:inputType="text"
-        android:layout_toEndOf="@+id/tv_edit_medicine_name_label"
-        android:layout_alignBaseline="@+id/tv_edit_medicine_name_label"
-        android:layout_alignParentEnd="true"/>
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/et_edit_medicine_doctor"
-        android:inputType="text"
-        android:layout_below="@+id/et_edit_medicine_name"
-        android:layout_toEndOf="@+id/tv_edit_medicine_name_label"
-        android:layout_alignBaseline="@+id/tv_edit_medicine_prescribing_doctor_label"
-        android:layout_alignParentEnd="true"/>
-
-    <EditText
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/et_edit_medicine_dose"
-        android:inputType="numberDecimal"
-        android:layout_below="@+id/et_edit_medicine_doctor"
-        android:layout_toEndOf="@+id/tv_edit_medicine_name_label"
-        android:layout_alignBaseline="@+id/tv_edit_medicine_dose_label"/>
-
-    <EditText
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/et_edit_medicine_refills"
-        android:inputType="number"
-        android:layout_below="@+id/et_edit_medicine_dose"
-        android:layout_toEndOf="@+id/tv_edit_medicine_name_label"
-        android:layout_alignBaseline="@+id/tv_edit_medicine_refills_label"/>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_edit_medicine_weekdays"
-        android:layout_below="@+id/tv_edit_medicine_refills_label"
-        android:layout_toEndOf="@+id/tv_edit_medicine_days_label"
-        android:layout_alignBaseline="@+id/tv_edit_medicine_days_label">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <CheckBox
+
+        <EditText
+            android:id="@+id/et_edit_medicine_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:layout_alignParentEnd="true"
+            android:hint="@string/medicine_name_text"
+            android:layout_marginTop="10dp"
+            />
+
+        <EditText
+            android:id="@+id/et_edit_medicine_doctor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:layout_below="@+id/et_edit_medicine_name"
+            android:layout_alignParentEnd="true"
+            android:hint="@string/medicine_prescribing_doctor"
+            />
+
+        <EditText
+            android:id="@+id/et_edit_medicine_dose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:layout_below="@+id/et_edit_medicine_doctor"
+            android:hint="@string/medicine_dose_text"
+            />
+
+        <EditText
+            android:id="@+id/et_edit_medicine_refills"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_below="@+id/et_edit_medicine_dose"
+            android:hint="@string/medicine_refills_text"
+            />
+
+        <TextView
+            android:id="@+id/tv_edit_medicine_days_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/cb_edit_medicine_monday"
-            android:text="@string/medicine_day_monday"/>
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cb_edit_medicine_tuesday"
-            android:text="@string/medicine_day_tuesday"
-            android:layout_below="@+id/cb_edit_medicine_monday"/>
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cb_edit_medicine_wednesday"
-            android:text="@string/medicine_day_wednesday"
-            android:layout_below="@+id/cb_edit_medicine_tuesday"
-            android:layout_marginEnd="@dimen/new_medicine_content_horizontal_checkbox_space"/>
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cb_edit_medicine_thursday"
-            android:text="@string/medicine_day_thursday"
-            android:layout_below="@+id/cb_edit_medicine_wednesday"/>
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cb_edit_medicine_friday"
-            android:text="@string/medicine_day_friday"
-            android:layout_toEndOf="@+id/cb_edit_medicine_wednesday"/>
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cb_edit_medicine_saturday"
-            android:text="@string/medicine_day_saturday"
-            android:layout_below="@+id/cb_edit_medicine_friday"
-            android:layout_toEndOf="@+id/cb_edit_medicine_wednesday"/>
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/cb_edit_medicine_sunday"
-            android:text="@string/medicine_day_sunday"
-            android:layout_below="@+id/cb_edit_medicine_saturday"
-            android:layout_toEndOf="@+id/cb_edit_medicine_wednesday"/>
-
-    </RelativeLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_edit_medicine_method"
-        android:text="@string/medicine_method_text"
-        android:layout_below="@+id/tv_edit_medicine_weekdays"
-        android:textSize="25sp"
-        android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space"
-        android:layout_marginTop="15dp"/>
-
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/method_selection_container"
-        android:orientation="horizontal"
-        android:layout_below="@+id/tv_edit_medicine_method"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true">
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/rdo_edit_method_periodically"
-            android:text="@string/medicine_method_periodically_text"
-            android:textSize="18sp"
-            android:layout_marginEnd="20dp"/>
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/rdo_edit_method_scheduled"
-            android:text="@string/medicine_method_scheduled_text"
-            android:textSize="18sp"/>
-    </RadioGroup>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btn_submit_edit_medicine"
-            android:text="@string/medicine_submit_button_text"
-            android:textSize="20sp"
+            android:text="@string/medicine_days_text"
+            android:layout_below="@+id/et_edit_medicine_refills"
+            android:textSize="25sp"
+            android:layout_marginTop="@dimen/new_medicine_content_vertical_space"
             android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space"
-            style="?android:buttonBarButtonStyle"/>
+            />
 
-        <Button
+        <RelativeLayout
+            android:id="@+id/layout_add_medicine_weekdays"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/btn_reset_edit_medicine"
-            android:text="@string/medicine_reset_button_text"
-            android:textSize="20sp"
-            style="?android:buttonBarButtonStyle"/>
+            android:layout_below="@+id/et_edit_medicine_refills"
+            android:layout_toEndOf="@+id/tv_edit_medicine_days_label"
+            android:layout_alignTop="@+id/tv_edit_medicine_days_label">
 
-    </LinearLayout>
+            <CheckBox
+                android:id="@+id/cb_edit_medicine_monday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/medicine_day_monday"
+                />
 
-</RelativeLayout>
+            <CheckBox
+                android:id="@+id/cb_edit_medicine_tuesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/medicine_day_tuesday"
+                android:layout_below="@+id/cb_edit_medicine_monday"
+                />
+
+            <CheckBox
+                android:id="@+id/cb_edit_medicine_wednesday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/medicine_day_wednesday"
+                android:layout_below="@+id/cb_edit_medicine_tuesday"
+                android:layout_marginEnd="@dimen/new_medicine_content_horizontal_checkbox_space"
+                />
+
+            <CheckBox
+                android:id="@+id/cb_edit_medicine_thursday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/medicine_day_thursday"
+                android:layout_below="@+id/cb_edit_medicine_wednesday"
+                />
+
+            <CheckBox
+                android:id="@+id/cb_edit_medicine_friday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/medicine_day_friday"
+                android:layout_toEndOf="@+id/cb_edit_medicine_wednesday"
+                />
+
+            <CheckBox
+                android:id="@+id/cb_edit_medicine_saturday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/medicine_day_saturday"
+                android:layout_below="@+id/cb_edit_medicine_friday"
+                android:layout_toEndOf="@+id/cb_edit_medicine_wednesday"
+                />
+
+            <CheckBox
+                android:id="@+id/cb_edit_medicine_sunday"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/medicine_day_sunday"
+                android:layout_below="@+id/cb_edit_medicine_saturday"
+                android:layout_toEndOf="@+id/cb_edit_medicine_wednesday"
+                />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tv_edit_medicine_method"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/medicine_method_text"
+            android:layout_below="@+id/layout_add_medicine_weekdays"
+            android:textSize="25sp"
+            android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space"
+            android:layout_marginTop="20dp"
+            />
+
+        <RadioGroup
+            android:id="@+id/edit_method_selection_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/tv_edit_medicine_method"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true">
+
+            <RadioButton
+                android:id="@+id/rdo_edit_method_periodically"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/medicine_method_periodically_text"
+                android:textSize="18sp"
+                android:layout_marginEnd="20dp"
+                android:checked="true"
+                />
+
+            <RadioButton
+                android:id="@+id/rdo_edit_method_scheduled"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/medicine_method_scheduled_text"
+                android:textSize="18sp"
+                />
+        </RadioGroup>
+
+        <FrameLayout
+            android:id="@+id/edit_medicine_method_layout_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/edit_method_selection_container"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true">
+
+            <RelativeLayout
+                android:id="@+id/edit_medicine_method_period_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_edit_medicine_period_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/medicine_period_text"
+                    android:textSize="25sp"
+                    android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_edit_medicine_period_head"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/medicine_period_lead_text"
+                    android:textSize="20sp"
+                    android:layout_toEndOf="@+id/tv_edit_medicine_period_label"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignBaseline="@+id/tv_edit_medicine_period_label"
+                    />
+
+                <EditText
+                    android:id="@+id/et_edit_medicine_period"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20sp"
+                    android:inputType="numberDecimal"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toEndOf="@+id/tv_edit_medicine_period_head"
+                    android:layout_alignBaseline="@+id/tv_edit_medicine_period_head"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_edit_medicine_period_trail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/medicine_period_trail_text"
+                    android:textSize="20sp"
+                    android:layout_toEndOf="@+id/et_edit_medicine_period"
+                    android:layout_alignBaseline="@+id/tv_edit_medicine_period_label"
+                    />
+
+                <Button
+                    android:id="@+id/btn_edit_medicine_period_start_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_edit_medicine_period_label"
+                    android:text="@string/medicine_period_start_time"
+                    android:textSize="20sp"
+                    android:textAllCaps="false"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_edit_medicine_period_start_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btn_edit_medicine_period_start_time"
+                    android:textSize="20sp"
+                    android:layout_marginTop="10dp"
+                    android:layout_centerHorizontal="true"
+                    />
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/edit_medicine_method_scheduled_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"
+                android:visibility="invisible"
+                android:orientation="vertical" >
+
+                <Button
+                    android:id="@+id/btn_edit_add_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/medicine_add_times_text"
+                    android:textSize="20sp"
+                    android:textAllCaps="false"
+                    android:padding="10dp"
+                    />
+
+            </LinearLayout>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/edit_medicine_method_layout_container">
+
+            <Button
+                android:id="@+id/btn_edit_submit_medicine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/medicine_submit_button_text"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space"
+                style="?android:buttonBarButtonStyle"
+                />
+
+            <Button
+                android:id="@+id/btn_edit_cancel_medicine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/cancel"
+                android:textSize="20sp"
+                android:textAllCaps="false"
+                style="?android:buttonBarButtonStyle"
+                />
+
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

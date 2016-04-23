@@ -11,9 +11,7 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
 
-/**
- * Created by Zach_macadams on 4/21/16.
- */
+
 public class AlertReceiver extends BroadcastReceiver {
 
     NotificationManager notificationManager;

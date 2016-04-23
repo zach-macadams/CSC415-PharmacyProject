@@ -35,14 +35,10 @@ import java.util.TimeZone;
 import io.realm.Realm;
 import io.realm.RealmList;
 
-/**
- * Created by macadamsz1 on 2/13/16.
- */
+
 public class AddMedicineFragment extends Fragment implements
         RadioGroup.OnCheckedChangeListener,
         CompoundButton.OnCheckedChangeListener {
-
-
 
     private Context context;
 
@@ -85,13 +81,6 @@ public class AddMedicineFragment extends Fragment implements
         super.onStart();
         context = getActivity();
         medicationRealm = Realm.getInstance(context);
-    }
-
-    @Override
-    public void onStop() {
-
-        super.onStop();
-        medicationRealm.close();
     }
 
 
@@ -363,14 +352,14 @@ public class AddMedicineFragment extends Fragment implements
 
                 int displayHour;
                 String endTimeTxt;
-                if(hourOfDay > 12)
+                if(hourOfDay >= 12)
                 {
-                    displayHour = hourOfDay - 12;
+                    displayHour = hourOfDay == 12 ? 12 : hourOfDay - 12;
                     endTimeTxt = "PM";
                 }
                 else
                 {
-                    displayHour = hourOfDay;
+                    displayHour = hourOfDay == 0 ? 12 : hourOfDay;
                     endTimeTxt = "AM";
                 }
                 String minuteStr = String.valueOf(minute);

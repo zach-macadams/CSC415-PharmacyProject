@@ -19,9 +19,7 @@ import java.util.Calendar;
 import io.realm.Realm;
 import io.realm.RealmResults;
 
-/**
- * Created by macadamsz1 on 2/13/16.
- */
+
 public class AlertListFragment extends Fragment {
 
     private Realm medicationRealm;
@@ -49,11 +47,6 @@ public class AlertListFragment extends Fragment {
         medicationResults = medicationRealm.where(Medication.class).findAll();
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        medicationRealm.close();
-    }
 
 
 
@@ -102,7 +95,7 @@ public class AlertListFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            return medicationResults.size();
+            return medicationResults == null ? 0 : medicationResults.size();
         }
     }
 

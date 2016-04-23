@@ -4,9 +4,7 @@ package com.tantdyalf.csc415_pharmacyapp_test;
 import io.realm.RealmObject;
 import io.realm.WeekdayRealmProxy;
 
-/**
- * Created by Zach_macadams on 3/21/16.
- */
+
 
 @org.parceler.Parcel(implementations = {WeekdayRealmProxy.class},
         value = org.parceler.Parcel.Serialization.BEAN,

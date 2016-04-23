@@ -2,12 +2,16 @@ package com.tantdyalf.csc415_pharmacyapp_test;
 
 import android.app.Activity;
 import android.app.AlarmManager;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,9 +25,7 @@ import io.realm.Realm;
 import io.realm.RealmList;
 import io.realm.RealmResults;
 
-/**
- * Created by macadamsz1 on 2/13/16.
- */
+
 public class MedicineListFragment extends Fragment {
 
     private Realm medicationRealm;
@@ -62,11 +64,6 @@ public class MedicineListFragment extends Fragment {
         medicationResults = medicationRealm.where(Medication.class).findAll();
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        medicationRealm.close();
-    }
 
 
     @Override
@@ -101,6 +98,7 @@ public class MedicineListFragment extends Fragment {
         medicineListRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_medicines);
         medicineListRecyclerView.setLayoutManager(new LinearLayoutManager(activity));
         medicineListRecyclerView.setAdapter(new MedicineListAdapter(activity));
+
 
         return view;
     }
@@ -159,8 +157,23 @@ public class MedicineListFragment extends Fragment {
             holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                 @Override
                 public boolean onLongClick(View v) {
-                    removeMedicine(position);
-                    medicineListRecyclerView.getAdapter().notifyDataSetChanged();
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setTitle(medicationName)
+                            .setMessage("Remove this medicine?")
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    removeMedicine(position);
+                                    medicineListRecyclerView.getAdapter().notifyDataSetChanged();
+                                }
+                            })
+                            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            }).show();
+
                     return true;
                 }
             });
@@ -168,6 +181,10 @@ public class MedicineListFragment extends Fragment {
 
         private void removeMedicine(int position) {
 
+            if(medicationResults.get(position).getAlertsActive())
+            {
+                TimeManager.removeAlerts(getContext(), medicationRealm, medicationResults.get(position));
+            }
             medicationRealm.beginTransaction();
             medicationResults.remove(position);
             medicationRealm.commitTransaction();
@@ -176,7 +193,7 @@ public class MedicineListFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            return medicationResults.size();
+            return medicationResults == null ? 0 : medicationResults.size();
         }
     }
 

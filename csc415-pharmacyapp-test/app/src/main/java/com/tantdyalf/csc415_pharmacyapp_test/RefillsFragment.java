@@ -46,11 +46,6 @@ public class RefillsFragment extends Fragment {
         medicationResults = medicationRealm.where(Medication.class).findAll();
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        medicationRealm.close();
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -105,6 +100,13 @@ public class RefillsFragment extends Fragment {
                                @Override
                                public void onClick(DialogInterface dialog, int which) {
 
+                                   Medication toUpdate = medicationRealm.where(Medication.class)
+                                           .equalTo("name", medicationName)
+                                           .findFirst();
+
+                                   medicationRealm.beginTransaction();
+                                   toUpdate.setNumRefills(numRefills);
+                                   medicationRealm.commitTransaction();
                                }
                            }).show();
                 }
@@ -130,10 +132,12 @@ public class RefillsFragment extends Fragment {
                             .equalTo("name", medicineName)
                             .findFirst();
 
-                    medicationRealm.beginTransaction();
-                    toUpdate.setNumRefills(toUpdate.getNumRefills() - 1);
-                    medicationRealm.commitTransaction();
-
+                    if(toUpdate.getNumRefills() > 0)
+                    {
+                        medicationRealm.beginTransaction();
+                        toUpdate.setNumRefills(toUpdate.getNumRefills() - 1);
+                        medicationRealm.commitTransaction();
+                    }
                     txtNumRefills.setText(String.valueOf(toUpdate.getNumRefills()));
                 }
             });
@@ -159,7 +163,7 @@ public class RefillsFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            return medicationResults.size();
+            return medicationResults == null ? 0 : medicationResults.size();
         }
     }
 

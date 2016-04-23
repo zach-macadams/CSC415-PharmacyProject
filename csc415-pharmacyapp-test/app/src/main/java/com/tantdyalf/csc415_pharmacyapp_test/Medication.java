@@ -3,9 +3,7 @@ package com.tantdyalf.csc415_pharmacyapp_test;
 import io.realm.RealmList;
 import io.realm.RealmObject;
 
-/**
- * Created by macadamsz1 on 2/16/16.
- */
+
 public class Medication extends RealmObject {
 
     private String name;

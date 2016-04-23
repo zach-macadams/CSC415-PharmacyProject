@@ -15,11 +15,10 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
+import io.realm.Realm;
 import io.realm.RealmList;
 
-/**
- * Created by Zach_macadams on 3/20/16.
- */
+
 public class ViewMedicineFragment  extends Fragment {
 
     private TextView txtViewMedicineName;
@@ -35,16 +34,8 @@ public class ViewMedicineFragment  extends Fragment {
     private RelativeLayout layoutScheduledLayout;
     private Button btnViewMedicineEdit;
 
-    private static final String ARGUMENT_MEDICATION_NAME = "medicationName";
-    private static final String ARGUMENT_MEDICATION_DOCTOR = "medicationDoctor";
-    private static final String ARGUMENT_MEDICATION_DOSE = "medicationDose";
-    private static final String ARGUMENT_MEDICATION_REFILLS = "medicationRefills";
-    private static final String ARGUMENT_MEDICATION_WEEKDAYS = "medicationWeekdays";
-    private static final String ARGUMENT_MEDICATION_METHOD = "medicationMethod";
-    private static final String ARGUMENT_MEDICATION_PERIOD = "medicationPeriod";
-    private static final String ARGUMENT_MEDICATION_START_TIME = "medicationStartTime";
-    private static final String ARGUMENT_MEDICATION_SCHEDULED_TIMES = "medicationScheduledTimes";
 
+    private Realm medicationRealm;
 
 
 
@@ -54,15 +45,15 @@ public class ViewMedicineFragment  extends Fragment {
     {
         Bundle args = new Bundle();
 
-        args.putString(ARGUMENT_MEDICATION_NAME, medicationName);
-        args.putString(ARGUMENT_MEDICATION_DOCTOR, doctorName);
-        args.putInt(ARGUMENT_MEDICATION_DOSE, dose);
-        args.putInt(ARGUMENT_MEDICATION_REFILLS, refills);
-        args.putInt(ARGUMENT_MEDICATION_METHOD, method);
-        args.putParcelable(ARGUMENT_MEDICATION_WEEKDAYS, Parcels.wrap(weekdays));
-        args.putInt(ARGUMENT_MEDICATION_PERIOD, period);
-        args.putString(ARGUMENT_MEDICATION_START_TIME, startTime);
-        args.putParcelable(ARGUMENT_MEDICATION_SCHEDULED_TIMES, Parcels.wrap(scheduledTimes));
+        args.putString(MainActivity.ARGUMENT_MEDICATION_NAME, medicationName);
+        args.putString(MainActivity.ARGUMENT_MEDICATION_DOCTOR, doctorName);
+        args.putInt(MainActivity.ARGUMENT_MEDICATION_DOSE, dose);
+        args.putInt(MainActivity.ARGUMENT_MEDICATION_REFILLS, refills);
+        args.putInt(MainActivity.ARGUMENT_MEDICATION_METHOD, method);
+        args.putParcelable(MainActivity.ARGUMENT_MEDICATION_WEEKDAYS, Parcels.wrap(weekdays));
+        args.putInt(MainActivity.ARGUMENT_MEDICATION_PERIOD, period);
+        args.putString(MainActivity.ARGUMENT_MEDICATION_START_TIME, startTime);
+        args.putParcelable(MainActivity.ARGUMENT_MEDICATION_SCHEDULED_TIMES, Parcels.wrap(scheduledTimes));
 
         ViewMedicineFragment fragment = new ViewMedicineFragment();
         fragment.setArguments(args);
@@ -71,6 +62,14 @@ public class ViewMedicineFragment  extends Fragment {
 
     public ViewMedicineFragment() {
 
+    }
+
+
+    @Override
+    public void onStart() {
+
+        super.onStart();
+        medicationRealm = Realm.getInstance(getActivity());
     }
 
 
@@ -94,47 +93,73 @@ public class ViewMedicineFragment  extends Fragment {
         layoutScheduledLayout = (RelativeLayout) view.findViewById(R.id.layout_view_medicine_scheduled);
         btnViewMedicineEdit = (Button) view.findViewById(R.id.btn_view_edit_medicine);
 
-        Bundle args = getArguments();
+        final Bundle args = getArguments();
 
-        txtViewMedicineName.setText(args.getString(ARGUMENT_MEDICATION_NAME));
-        txtViewMedicineDoctor.setText(args.getString(ARGUMENT_MEDICATION_DOCTOR));
-        txtViewMedicineDose.setText(String.valueOf(args.getInt(ARGUMENT_MEDICATION_DOSE)));
-        txtViewMedicineRefills.setText(String.valueOf(args.getInt(ARGUMENT_MEDICATION_REFILLS)));
+        getActivity().setTitle(args.getString(MainActivity.ARGUMENT_MEDICATION_NAME));
 
-        ArrayList<Weekday> weekdays = Parcels.unwrap(args.getParcelable(ARGUMENT_MEDICATION_WEEKDAYS));
+        txtViewMedicineName.setText(args.getString(MainActivity.ARGUMENT_MEDICATION_NAME));
+        txtViewMedicineDoctor.setText(args.getString(MainActivity.ARGUMENT_MEDICATION_DOCTOR));
+        txtViewMedicineDose.setText(String.valueOf(args.getInt(MainActivity.ARGUMENT_MEDICATION_DOSE)));
+        txtViewMedicineRefills.setText(String.valueOf(args.getInt(MainActivity.ARGUMENT_MEDICATION_REFILLS)));
+
+        ArrayList<Weekday> weekdays = Parcels.unwrap(args.getParcelable(MainActivity.ARGUMENT_MEDICATION_WEEKDAYS));
         String weekdayString = "";
         if(weekdays != null)
         {
-            for(Weekday day : weekdays)
+            for(int i = 0; i < weekdays.size(); i++)
             {
-                weekdayString += day.getDayName() + " ";
+                weekdayString += weekdays.get(i).getDayName();
+                if(i != weekdays.size() - 1)
+                {
+                    weekdayString += ",  ";
+                }
             }
         }
         txtViewMedicineWeekdays.setText(weekdayString);
 
-        int method = args.getInt(ARGUMENT_MEDICATION_METHOD);
+        int method = args.getInt(MainActivity.ARGUMENT_MEDICATION_METHOD);
         if(method == MainActivity.METHOD_PERIODICAL)
         {
             layoutScheduledLayout.setVisibility(View.INVISIBLE);
             txtViewMedicineMethod.setText("Periodical");
-            txtViewMedicineStartTime.setText(args.getString(ARGUMENT_MEDICATION_START_TIME));
-            txtViewMedicinePeriod.setText(String.valueOf(args.getInt(ARGUMENT_MEDICATION_PERIOD)));
+            txtViewMedicineStartTime.setText(args.getString(MainActivity.ARGUMENT_MEDICATION_START_TIME));
+            txtViewMedicinePeriod.setText(String.valueOf(args.getInt(MainActivity.ARGUMENT_MEDICATION_PERIOD)));
         }
         else
         {
             txtViewMedicineMethod.setText("Scheduled");
             layoutPeriodicalLayout.setVisibility(View.INVISIBLE);
-            ArrayList<Time> scheduledTimes = Parcels.unwrap(args.getParcelable(ARGUMENT_MEDICATION_SCHEDULED_TIMES));
+            ArrayList<Time> scheduledTimes = Parcels.unwrap(args.getParcelable(MainActivity.ARGUMENT_MEDICATION_SCHEDULED_TIMES));
             String scheduledTimesString = "";
             if(scheduledTimes != null)
             {
-                for(Time time : scheduledTimes)
+                for(int i = 0; i < scheduledTimes.size(); i++)
                 {
-                    scheduledTimesString += time.getTime() + " ";
+                    scheduledTimesString += scheduledTimes.get(i).getTime();
+                    if(i != scheduledTimes.size() - 1)
+                    {
+                        scheduledTimesString += ",  ";
+                    }
                 }
             }
             txtViewMedicineScheduledTimes.setText(scheduledTimesString);
         }
+
+        btnViewMedicineEdit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Medication medicine = medicationRealm.where(Medication.class)
+                                                     .equalTo("name", args.getString(MainActivity.ARGUMENT_MEDICATION_NAME))
+                                                     .findFirst();
+                EditMedicineFragment fragment = EditMedicineFragment.newInstance(medicine);
+                getFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragment_content_container, fragment)
+                        .addToBackStack(null)
+                        .commit();
+            }
+        });
         return view;
     }
 }

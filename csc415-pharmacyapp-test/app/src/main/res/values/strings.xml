@@ -2,12 +2,17 @@
     <string name="app_name">Pill Master</string>
     <string name="medicine_list_fragment_label">Medications</string>
     <string name="add_medicine_fragment_label">Add Medicine</string>
+    <string name="edit_medicine_fragment_label">Edit Medicine</string>
     <string name="refills_fragment_label">Refills</string>
     <string name="alerts_list_fragment_label">Alerts</string>
+
+    <string name="empty_text">No medications have been added</string>
 
     <string name="decrease_refills">-</string>
     <string name="increase_refills">+</string>
     <string name="refills_text">Number of Refills</string>
+
+    <string name="cancel">Cancel</string>
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -17,17 +22,18 @@
 
     <string name="medicine_name_text">Medicine Name</string>
     <string name="medicine_prescribing_doctor">Doctor\'s Name</string>
-    <string name="medicine_dose_text">Dose</string>
+    <string name="medicine_dose_text">Pills/Dose</string>
     <string name="medicine_refills_text">Refills</string>
     <string name="medicine_method_text">Method:</string>
     <string name="medicine_days_text">Days:</string>
-    <string name="medicine_start_time_text">Start Time:</string>
-    <string name="medicine_scheduled_times_text">Times:</string>
+    <string name="medicine_start_time_text">Start At</string>
+    <string name="medicine_scheduled_times_text">Take At:</string>
 
     <string name="medicine_method_periodically_text">periodically</string>
     <string name="medicine_method_scheduled_text">scheduled</string>
     <string name="medicine_add_times_text">Add Time</string>
-    <string name="medicine_period_text">Period:</string>
+    <string name="medicine_period_text">Take every</string>
+    <string name="hours">hours</string>
     <string name="medicine_period_start_time">Add Start Time</string>
     <string name="medicine_period_lead_text">Every</string>
     <string name="medicine_period_trail_text">hr/s</string>

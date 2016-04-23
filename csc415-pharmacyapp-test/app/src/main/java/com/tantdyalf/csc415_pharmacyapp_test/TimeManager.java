@@ -13,9 +13,7 @@ import java.util.TimeZone;
 
 import io.realm.Realm;
 
-/**
- * Created by Zach_macadams on 4/22/16.
- */
+
 public class TimeManager {
 
 
