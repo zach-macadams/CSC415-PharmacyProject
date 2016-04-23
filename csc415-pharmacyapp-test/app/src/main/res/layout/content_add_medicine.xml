@@ -179,17 +179,8 @@
                     android:id="@+id/tv_add_medicine_period_label"
                     android:text="@string/medicine_period_text"
                     android:textSize="25sp"
-                    android:layout_marginEnd="@dimen/new_medicine_content_horizontal_space"/>
+                    android:layout_marginEnd="10dp"/>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/tv_add_medicine_period_head"
-                    android:text="@string/medicine_period_lead_text"
-                    android:textSize="20sp"
-                    android:layout_toEndOf="@+id/tv_add_medicine_period_label"
-                    android:layout_marginEnd="10dp"
-                    android:layout_alignBaseline="@+id/tv_add_medicine_period_label"/>
 
                 <EditText
                     android:layout_width="wrap_content"
@@ -198,8 +189,8 @@
                     android:textSize="20sp"
                     android:inputType="numberDecimal"
                     android:layout_marginEnd="10dp"
-                    android:layout_toEndOf="@+id/tv_add_medicine_period_head"
-                    android:layout_alignBaseline="@+id/tv_add_medicine_period_head"/>
+                    android:layout_toEndOf="@+id/tv_add_medicine_period_label"
+                    android:layout_alignBaseline="@+id/tv_add_medicine_period_label"/>
 
                 <TextView
                     android:layout_width="wrap_content"
